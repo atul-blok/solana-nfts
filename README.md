@@ -9,6 +9,22 @@ Here, I'm going to discuss about the three major ways to mint NFTs in solana wit
 
 # NFT Minting using Anchor & Rust Cartes 
 
+## Approach 
+
+- In this approach of minting NFT on Solana blockchain (devnet) , we are creating a simple anchor (a development framework on Solana) project using - 
+``anchor init mint-nft``
+- After creating Minting we are updating [Anchor.toml](./mint-nft/Anchor.toml) with ** devnet ** and ** keypair ** path. 
+- In [lib.rs](./mint-nft/programs/mint-nft/src/lib.rs) program file , we are creating these account to start minting - 
+    - First, we need to create a mint account that is used to store the supply of token and used as a token for example - [above-minted-nft](https://explorer.solana.com/address/8oSTEMhuRdXW7hSoC1AfW8maQYYZ3PiaMUo8FYozW4Nw?cluster=devnet)
+    - Second , we create token account that contain about minter , owner and total token balance for example -[above-token-acc](https://explorer.solana.com/address/ELy8bXN6zV4Lvp9eMG1L93GcVDvxzAi7eiKzJKfUkmZW?cluster=devnet)
+    - Third, Metaplex Metadata account that is used to store token URI and data for NFT with metaplex - 
+    [metadata-acc](https://explorer.solana.com/address/7GvqzemwNkWRHWMxcBZhxZGSiBaH5tDWohBSqNoUSsW1?cluster=devnet)  
+    - Fourth, Metaplex MasterEdition account that don't contain any data but create [print](https://docs.metaplex.com/resources/definitions#print) to make the copy of NFT to owner. 
+
+- After program build & deploy using ``` anchor build && anchor deploy```, we can use a [anchor-client](https://github.com/coral-xyz/anchor) to call actions to mint the program , we can mint multiple NFTs from a single program.  
+
+- This approach would work with a lots of development of solana program. 
+
 #### Example
 
 Program-code - [mint-nft](./mint-nft/programs/mint-nft/src/lib.rs)
@@ -59,4 +75,3 @@ Rent per byte-year: 0.00000348 SOL
 Rent per epoch: 0.010275828 SOL
 Rent-exempt minimum: 3.75316608 SOL
 ```
-
