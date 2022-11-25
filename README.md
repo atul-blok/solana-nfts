@@ -19,11 +19,11 @@ Client-code to mint nft - [call-from-client](./mint-nft/app/)
 #### Costs & Stats 
 
 | Command | Example Balance | Description |
-| --- | --- |
-| Before Deployment | `4.453909 SOL` | It's balance befor deploying above code on devnet. 
-| After Deployment | `0.69303344 SOL` | It's remaining balance of account after deployment. `3.76087556 SOL`  used to create all accounts i.e. Mint , Token, Metadata etc.
-| Before Minting 1 card with Metadata | `4.67086065 SOL` | It's balance of account before pusing Mint transaction on chain. 
-| After Minting 1 card with Metadata | `4.64764105 SOL` | Remaining balance after minting 1 card with this approach using Metaplex account with metadata. 
+| --- | --- | --- |
+| Before Deployment | `4.453909 SOL` | It's balance befor deploying above code on devnet. |
+| After Deployment | `0.69303344 SOL` | It's remaining balance of account after deployment. `3.76087556 SOL`  used to create all accounts i.e. Mint , Token, Metadata etc.|
+| Before Minting 1 card with Metadata | `4.67086065 SOL` | It's balance of account before pusing Mint transaction on chain. |
+| After Minting 1 card with Metadata | `4.64764105 SOL` | Remaining balance after minting 1 card with this approach using Metaplex account with metadata. |
 
 #### Advantages
 - It's a customisable solana program where we can make fork the actual SPL token contract for minting & setting up the metdata accounts. 
