@@ -1,4 +1,4 @@
-import { Connection, Keypair, PublicKey } from "@solana/web3.js";
+import { Connection, Keypair, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import {
   Metaplex,
   keypairIdentity,
@@ -8,6 +8,7 @@ import {
 } from "@metaplex-foundation/js";
 import * as fs from "fs";
 import secret from "./guideSecret.json";
+const { calculate } = require('@metaplex/arweave-cost');
 
 const RPC_ENDPOINT = "https://api.devnet.solana.com";
 const SOLANA_CONNECTION = new Connection(RPC_ENDPOINT);
@@ -45,10 +46,12 @@ async function uploadImage(
   fileName: string
 ): Promise<string> {
   console.log(`Step 1 - Uploading Image`);
+  console.log('Before upload Image:', await getBalance());
   const imgBuffer = fs.readFileSync(filePath + fileName);
   const imgMetaplexFile = toMetaplexFile(imgBuffer, fileName);
   const imgUri = await METAPLEX.storage().upload(imgMetaplexFile);
   console.log(`   Image URI:`, imgUri);
+  console.log('After upload:', await getBalance());
   return imgUri;
 }
 
@@ -75,9 +78,15 @@ async function uploadMetadata(
     },
   });
   console.log("   Metadata URI:", data);
+  console.log('After upload metadata:', await getBalance());
   return data.uri;
 }
 
+async function getBalance(){
+  let balance = await SOLANA_CONNECTION.getBalance(WALLET.publicKey);
+  // console.log(`Remaing balance - ${balance / LAMPORTS_PER_SOL} SOL`);
+  return `${balance / LAMPORTS_PER_SOL} SOL`;
+}
 async function mintNft(
   metadataUri: string,
   name: string,
@@ -99,6 +108,7 @@ async function mintNft(
   console.log(
     `   Minted NFT: https://explorer.solana.com/address/${mintedNft.nft.address}?cluster=devnet`
   );
+  console.log('After mint NFT:', await getBalance());
 }
 
 async function main() {
@@ -107,7 +117,7 @@ async function main() {
       CONFIG.imgName
     } to an NFT in Wallet ${WALLET.publicKey.toBase58()}.`
   );
-  //Step 1 - Upload Image
+  // Step 1 - Upload Image
   const imgUri = await uploadImage(CONFIG.uploadPath, CONFIG.imgFileName);
 
   //Step 2 - Upload Metadata
@@ -129,4 +139,12 @@ async function main() {
   );
 }
 
-main();
+
+async function getArweave(){
+  const cost = await calculate([1024]);
+
+console.log(`The cost to store the files is ${cost.solana} SOL or ${cost.arweave} AR`);
+}
+// getArweave()
+
+// main();

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@metaplex-foundation/js": "^0.17.6",
+    "@metaplex/arweave-cost": "^2.0.0",
     "@solana/web3.js": "^1.66.2"
   }
 }
