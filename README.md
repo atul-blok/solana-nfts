@@ -153,5 +153,5 @@ And take `0.01198120 SOL` to mint a NFT using this approach with all NFT minting
 
 > **_NOTE:_**  We are figuring out the solution for deployment Candy Machine & Minting NFT direct from Node Js/ Typescript. 
 
-Thank You for all these approach ..
+Thank You for reading ..
 
