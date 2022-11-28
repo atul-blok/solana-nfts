@@ -92,7 +92,7 @@ Rent-exempt minimum: 3.75316608 SOL
 
 | Setps | Example Balance | Description |
 | --- | --- | --- |
-| Before starting mining & uploading | `4.623570034 SOL` | It's balanced before minting and uploading metadata script on devnet. |
+| Before starting minting & uploading | `4.623570034 SOL` | It's balanced before minting and uploading metadata script on devnet. |
 | Step 1 - Uploading Image & metadata on Arweave | `4.623570034 SOL` | It's the remaining balance of the account after uploading the image, metadata, etc. The current cost to store the 1KB file is 0.0000014908690623249299 SOL or 0.000002233957 AR |
 | Before Minting 1 card with Metadata | `4.623570034 SOL` | It's account balance before pushing Mint transaction on the chain. |
 | After Minting 1 card with Metadata | `4.611553239 SOL` | Remaining balance after minting 1 card with this approach using Metaplex account with metadata. It uses almost `0.012016795 SOL` to mint an NFT with metadata.|
@@ -129,7 +129,7 @@ Rent-exempt minimum: 3.75316608 SOL
 #### Costs & Stats 
 | Setps | Example Balance | Description |
 | --- | --- | --- |
-| Before starting mining & uploading | `4.611503335 SOL` | It's balanced before minting and uploading metadata script on devnet. |
+| Before starting minting & uploading | `4.611503335 SOL` | It's balanced before minting and uploading metadata script on devnet. |
 | Step 1 - Uploading Image & metadata on Arweave | `4.611445527 SOL` | It's the remaining balance of the account after uploading the image, metadata, etc. The current cost to store the 1KB file is 0.0000014908690623249299 SOL or 0.000002233957 AR. Sugar used all collection NFT's metadata for the above collection is `0.000057808 SOL` |
 | Deployment of Candy machine with collection | `4.574254127 SOL` | It's a balance of the account after deploying the candy machine on the chain. |
 | Before Minting 1 card with Metadata | `4.574254127 SOL` | It's the balance of the account before pushing the Mint transaction on the chain. |
